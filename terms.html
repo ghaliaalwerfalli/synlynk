@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms of Use — Orba Personal P&amp;L Journal</title>
+  <meta name="description" content="Terms of Use for Orba — Personal P&amp;L Journal by Synlynk Innovations. $4.99 one-time purchase. iOS. No account required. No subscription."/>
+  <link rel="icon" href="images/favicon.png" type="image/png"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Outfit:wght@700;800&display=swap" rel="stylesheet"/>
+
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    :root {
+      --bg:            #080A09;
+      --card:          #121912;
+      --rim:           #1E2E22;
+      --accent:        #B4F050;
+      --text:          #EDE8DA;
+      --text2:         #7A9E82;
+      --text3:         #3A5A42;
+      --glass-bg:      rgba(12,20,14,0.62);
+      --glass-border:  rgba(180,240,80,0.11);
+      --glass-border2: rgba(180,240,80,0.20);
+      --specular:      rgba(255,255,255,0.055);
+      --nav-bg:        rgba(8,10,9,0.88);
+      --glow-blob:     rgba(180,240,80,0.08);
+    }
+    [data-theme="light"] {
+      --bg:            #F6EEDD;
+      --card:          #EDE0C8;
+      --rim:           #D0C4A4;
+      --accent:        #5C7234;
+      --text:          #2A2A1E;
+      --text2:         #6B7A5A;
+      --text3:         #9A9072;
+      --glass-bg:      rgba(240,230,212,0.72);
+      --glass-border:  rgba(92,114,52,0.18);
+      --glass-border2: rgba(92,114,52,0.30);
+      --specular:      rgba(255,255,255,0.45);
+      --nav-bg:        rgba(246,238,221,0.90);
+      --glow-blob:     rgba(92,114,52,0.07);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 64px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      transition: background 0.35s ease;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .nav-logo-svg { width: 28px; height: 28px; color: var(--accent); }
+    .nav-logo-svg .nr { transform-origin: 16px 16px; }
+    .nav-logo-svg .nr1 { animation: rspin  9s linear infinite; }
+    .nav-logo-svg .nr2 { animation: rspin60 9s linear infinite; }
+    .nav-logo-svg .nr3 { animation: rspinn60 7s linear infinite; }
+    @keyframes rspin    { from{transform:rotate(0deg)}   to{transform:rotate(360deg)} }
+    @keyframes rspin60  { from{transform:rotate(60deg)}  to{transform:rotate(420deg)} }
+    @keyframes rspinn60 { from{transform:rotate(-60deg)} to{transform:rotate(300deg)} }
+    .nav-wordmark {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: 4px;
+    }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-back {
+      font-size: 13px;
+      color: var(--text2);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .theme-btn {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--glass-border2);
+      background: var(--glass-bg);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text2);
+      transition: all 0.2s;
+    }
+    .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .theme-btn svg { width: 16px; height: 16px; pointer-events: none; }
+    .icon-sun  { display: none; }
+    .icon-moon { display: block; }
+    [data-theme="light"] .icon-sun  { display: block; }
+    [data-theme="light"] .icon-moon { display: none; }
+
+    /* Page */
+    .page-hero {
+      padding: 120px 32px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse at top, var(--glow-blob) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .page-eyebrow {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .page-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .page-meta { font-size: 13px; color: var(--text3); }
+
+    .page-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 32px 100px;
+    }
+
+    .doc-section {
+      margin-bottom: 52px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .doc-section:last-child { border-bottom: none; }
+
+    .doc-section h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: clamp(18px, 2.5vw, 24px);
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .doc-section p {
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .doc-section p:last-child { margin-bottom: 0; }
+    .doc-section ul, .doc-section ol {
+      padding-left: 20px;
+      margin: 14px 0;
+    }
+    .doc-section li {
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    .highlight-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border2);
+      border-radius: 20px;
+      padding: 28px 28px;
+      margin: 20px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--specular);
+    }
+    .highlight-card p { margin-bottom: 0; }
+    .highlight-card strong { color: var(--accent); }
+
+    .warning-card {
+      background: rgba(255,107,91,0.07);
+      border: 1px solid rgba(255,107,91,0.22);
+      border-radius: 20px;
+      padding: 24px 28px;
+      margin: 20px 0;
+    }
+    [data-theme="light"] .warning-card {
+      background: rgba(197,104,71,0.07);
+      border-color: rgba(197,104,71,0.22);
+    }
+    .warning-card p {
+      margin-bottom: 0;
+      color: var(--text2);
+    }
+
+    code {
+      font-size: 13px;
+      color: var(--accent);
+      background: rgba(180,240,80,0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    [data-theme="light"] code { background: rgba(92,114,52,0.10); }
+
+    a { color: var(--accent); }
+    a:hover { text-decoration: underline; }
+
+    strong { color: var(--text); }
+
+    footer {
+      padding: 40px 32px;
+      border-top: 1px solid var(--glass-border);
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { font-size: 12px; color: var(--text3); opacity: .5; }
+
+    @media (max-width: 600px) {
+      .nav { padding: 0 20px; }
+      .page-hero { padding: 100px 20px 48px; }
+      .page-content { padding: 0 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="Back to Orba home">
+    <svg class="nav-logo-svg" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="3.5" fill="currentColor" opacity=".9"/>
+      <ellipse class="nr nr1" cx="16" cy="16" rx="12" ry="3.5" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".8"/>
+      <ellipse class="nr nr2" cx="16" cy="16" rx="12" ry="3.5" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".8"/>
+      <ellipse class="nr nr3" cx="16" cy="16" rx="12" ry="3.5" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".7"/>
+    </svg>
+    <span class="nav-wordmark">ORBA</span>
+  </a>
+
+  <div class="nav-right">
+    <a href="index.html" class="nav-back" aria-label="Back to home">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Home
+    </a>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle dark and light mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-eyebrow">Legal</span>
+    <h1 class="page-title">Terms of Use</h1>
+    <p class="page-meta">Last updated: May 2026 · Applies to Orba v1.0.0 and later · $4.99 one-time purchase</p>
+  </div>
+</header>
+
+
+<main class="page-content" id="main-content">
+
+  <!-- Acceptance -->
+  <div class="doc-section">
+    <h2>Acceptance of Terms</h2>
+    <p>
+      By downloading, installing, or using Orba — Budget Journal (the "App"), you agree to be bound by these Terms of Use ("Terms"). If you do not agree, do not use the App.
+    </p>
+    <p>
+      These Terms constitute the entire agreement between you and Synlynk Innovations ("we", "us", "our") regarding your use of the App. Synlynk Innovations reserves the right to update these Terms at any time. Continued use of the App after an update constitutes acceptance of the revised Terms.
+    </p>
+  </div>
+
+  <!-- About the App -->
+  <div class="doc-section">
+    <h2>About the App</h2>
+    <p>
+      Orba is a personal profit and loss journal for iOS. It allows you to manually log income and expense entries, set monthly budget and income targets, and visualise your net financial position — income minus expenses — month by month. The App is:
+    </p>
+    <ul>
+      <li><strong>$4.99 one-time purchase</strong> — no subscription, no renewal, no hidden fees. Yours forever.</li>
+      <li><strong>Offline-first</strong> — all data is stored locally on your device, never transmitted</li>
+      <li><strong>Account-free</strong> — no registration, email, or sign-in required</li>
+      <li><strong>iOS only</strong> — available for iPhone (v1.0.0)</li>
+    </ul>
+    <p>
+      The one-time purchase grants you a perpetual licence to use the App and receive future updates made available through the App Store, subject to Apple's standard distribution terms.
+    </p>
+  </div>
+
+  <!-- Purchases and Refunds -->
+  <div class="doc-section">
+    <h2>Purchases &amp; Refunds</h2>
+    <p>
+      Orba is available for a one-time purchase of <strong>$4.99</strong> through the Apple App Store. There are no in-app purchases, no subscription tiers, and no additional charges of any kind after the initial purchase.
+    </p>
+    <p>
+      All purchases are processed by Apple, Inc. through the App Store. Refund requests are handled directly by Apple and are subject to Apple's refund policy. Synlynk Innovations does not independently process payments or issue refunds. To request a refund, please visit <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>.
+    </p>
+  </div>
+
+  <!-- Financial disclaimer (most important) -->
+  <div class="doc-section">
+    <h2>Not Financial Advice</h2>
+
+    <div class="warning-card">
+      <p>
+        <strong>Important:</strong> Orba is a personal profit and loss <em>journal</em> for budgeting and self-tracking purposes only. It is not a financial advisor, investment advisor, bank, or regulated financial service. Nothing in the App constitutes financial, investment, legal, or tax advice.
+      </p>
+    </div>
+
+    <p>
+      The P&amp;L figures, net summaries, and charts displayed in the App reflect only the income and expense data you manually enter. Orba does not verify, validate, or guarantee the accuracy of any calculations. You are solely responsible for the accuracy of the information you log.
+    </p>
+    <p>
+      You should not make financial decisions — including investment, savings, lending, or spending decisions — based solely on information displayed in this App. Consult a qualified financial professional for advice specific to your circumstances.
+    </p>
+  </div>
+
+  <!-- Permitted use -->
+  <div class="doc-section">
+    <h2>Permitted Use</h2>
+    <p>
+      You may use the App for personal, non-commercial budgeting and expense tracking. You agree not to:
+    </p>
+    <ul>
+      <li>Reverse-engineer, decompile, or disassemble the App</li>
+      <li>Use the App for any unlawful purpose or in violation of any applicable law</li>
+      <li>Attempt to circumvent any limitations of the App</li>
+      <li>Reproduce, sell, or redistribute the App or any portion of it</li>
+      <li>Use the App to track financial information of others without their consent</li>
+    </ul>
+    <p>
+      These Terms grant you a limited, personal, non-exclusive, non-transferable, revocable licence to use the App on Apple devices you own or control, subject to these Terms and the App Store Terms of Service.
+    </p>
+  </div>
+
+  <!-- Intellectual property -->
+  <div class="doc-section">
+    <h2>Intellectual Property</h2>
+    <p>
+      The App, including its name, logo (the orbital atom mark), design system, typography, icons, and all source code, is the exclusive property of Synlynk Innovations. All rights reserved.
+    </p>
+    <p>
+      The "Orba" name and the orbital atom logotype are brand assets of Synlynk Innovations. You may not use them without prior written permission.
+    </p>
+    <p>
+      Your financial data that you enter into the App belongs entirely to you. Synlynk Innovations makes no claim over your data.
+    </p>
+  </div>
+
+  <!-- Your data and responsibility -->
+  <div class="doc-section">
+    <h2>Your Data &amp; Your Responsibility</h2>
+    <p>
+      Because all data is stored locally on your device:
+    </p>
+    <ul>
+      <li><strong>You are responsible for backing up your data.</strong> If you uninstall the App, restore your device from an iCloud or iTunes backup that does not include Orba's data, or replace your iPhone without transferring data, your financial log may be permanently lost.</li>
+      <li><strong>We cannot recover your data.</strong> Synlynk Innovations has no copy of your entries, profile, or settings.</li>
+      <li><strong>Device security is your responsibility.</strong> Securing access to your iPhone (passcode, Face ID, Touch ID) protects your financial data from unauthorised access.</li>
+    </ul>
+
+    <div class="highlight-card">
+      <p>
+        <strong>Tip:</strong> iOS device backups (iCloud or iTunes/Finder) include Orba's local data by default, provided "Orba" is enabled in your iCloud backup app list. We recommend keeping regular device backups.
+      </p>
+    </div>
+  </div>
+
+  <!-- Disclaimers and limitation of liability -->
+  <div class="doc-section">
+    <h2>Disclaimers &amp; Limitation of Liability</h2>
+    <p>
+      The App is provided on an <strong>"as is"</strong> and <strong>"as available"</strong> basis without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, accuracy, or non-infringement.
+    </p>
+    <p>
+      Synlynk Innovations does not warrant that:
+    </p>
+    <ul>
+      <li>The App will be error-free or uninterrupted</li>
+      <li>Calculations or figures in the App will be mathematically exact in all edge cases</li>
+      <li>The App will be compatible with all future versions of iOS</li>
+      <li>Any defects will be corrected in a specific timeframe</li>
+    </ul>
+    <p>
+      To the fullest extent permitted by applicable law, Synlynk Innovations shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use or inability to use the App, including but not limited to loss of data, financial loss, or any other damages.
+    </p>
+    <p>
+      In jurisdictions that do not permit the exclusion of certain warranties or limitation of liability, our liability is limited to the maximum extent permitted by applicable law.
+    </p>
+  </div>
+
+  <!-- Apple requirements -->
+  <div class="doc-section">
+    <h2>Apple App Store — Additional Terms</h2>
+    <p>
+      The App is made available through the Apple App Store. The following additional terms apply:
+    </p>
+    <ul>
+      <li>These Terms are between you and Synlynk Innovations only, not Apple, Inc.</li>
+      <li>Apple has no obligation to furnish maintenance or support services for the App.</li>
+      <li>Apple is not responsible for any product liability claims or any claim that the App fails to conform to any applicable legal or regulatory requirement.</li>
+      <li>In the event of any third-party intellectual property claim related to the App, Apple is not responsible for the investigation, defence, settlement, or discharge of such claims.</li>
+      <li>Apple and its subsidiaries are third-party beneficiaries of these Terms, and upon your acceptance, Apple has the right to enforce these Terms against you.</li>
+    </ul>
+    <p>
+      You must comply with applicable third-party terms of service when using the App (e.g., your mobile network agreement).
+    </p>
+  </div>
+
+  <!-- Governing law -->
+  <div class="doc-section">
+    <h2>Governing Law</h2>
+    <p>
+      These Terms shall be governed by and construed in accordance with the laws applicable to the developer's jurisdiction. Any disputes arising from these Terms or the use of the App shall be subject to the exclusive jurisdiction of the competent courts in that jurisdiction.
+    </p>
+  </div>
+
+  <!-- Changes -->
+  <div class="doc-section">
+    <h2>Changes to These Terms</h2>
+    <p>
+      Synlynk Innovations may revise these Terms at any time by updating this page and the "Last updated" date above. Changes will also be noted in App Store release notes when they are material. Your continued use of the App after any changes constitutes your acceptance of the new Terms.
+    </p>
+  </div>
+
+  <!-- Contact -->
+  <div class="doc-section">
+    <h2>Contact</h2>
+    <p>
+      Questions or concerns about these Terms should be directed to:
+    </p>
+    <div class="highlight-card">
+      <p>
+        <strong>Synlynk Innovations</strong><br/>
+        Developer of Orba — Budget Journal<br/>
+        For support enquiries, please use the "App Support" link on the Orba App Store page, or reach out through the About section in the App (<em>Me → About → Orba</em>).
+      </p>
+    </div>
+  </div>
+
+</main>
+
+
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="index.html">← Back to Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+    <p class="footer-copy">© 2026 Synlynk Innovations · All rights reserved</p>
+  </div>
+</footer>
+
+
+<script>
+  const html = document.documentElement;
+  const btn  = document.getElementById('themeBtn');
+  const stored = localStorage.getItem('orba-theme') || 'dark';
+  html.setAttribute('data-theme', stored);
+  btn.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('orba-theme', next);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy — Orba Personal P&amp;L Journal</title>
+  <meta name="description" content="Orba collects zero user data. All your income and expense entries are stored locally on your device and never leave your iPhone."/>
+  <link rel="icon" href="images/favicon.png" type="image/png"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Outfit:wght@700;800&display=swap" rel="stylesheet"/>
+
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    :root {
+      --bg:            #080A09;
+      --card:          #121912;
+      --rim:           #1E2E22;
+      --accent:        #B4F050;
+      --text:          #EDE8DA;
+      --text2:         #7A9E82;
+      --text3:         #3A5A42;
+      --glass-bg:      rgba(12,20,14,0.62);
+      --glass-border:  rgba(180,240,80,0.11);
+      --glass-border2: rgba(180,240,80,0.20);
+      --specular:      rgba(255,255,255,0.055);
+      --nav-bg:        rgba(8,10,9,0.88);
+      --glow-blob:     rgba(180,240,80,0.08);
+    }
+    [data-theme="light"] {
+      --bg:            #F6EEDD;
+      --card:          #EDE0C8;
+      --rim:           #D0C4A4;
+      --accent:        #5C7234;
+      --text:          #2A2A1E;
+      --text2:         #6B7A5A;
+      --text3:         #9A9072;
+      --glass-bg:      rgba(240,230,212,0.72);
+      --glass-border:  rgba(92,114,52,0.18);
+      --glass-border2: rgba(92,114,52,0.30);
+      --specular:      rgba(255,255,255,0.45);
+      --nav-bg:        rgba(246,238,221,0.90);
+      --glow-blob:     rgba(92,114,52,0.07);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 64px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      transition: background 0.35s ease;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .nav-logo-svg { width: 28px; height: 28px; color: var(--accent); }
+    .nav-logo-svg .nr { transform-origin: 16px 16px; }
+    .nav-logo-svg .nr1 { animation: rspin  9s linear infinite; }
+    .nav-logo-svg .nr2 { animation: rspin60 9s linear infinite; }
+    .nav-logo-svg .nr3 { animation: rspinn60 7s linear infinite; }
+    @keyframes rspin    { from{transform:rotate(0deg)}   to{transform:rotate(360deg)} }
+    @keyframes rspin60  { from{transform:rotate(60deg)}  to{transform:rotate(420deg)} }
+    @keyframes rspinn60 { from{transform:rotate(-60deg)} to{transform:rotate(300deg)} }
+    .nav-wordmark {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: 4px;
+    }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-back {
+      font-size: 13px;
+      color: var(--text2);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .theme-btn {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--glass-border2);
+      background: var(--glass-bg);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text2);
+      transition: all 0.2s;
+    }
+    .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .theme-btn svg { width: 16px; height: 16px; pointer-events: none; }
+    .icon-sun  { display: none; }
+    .icon-moon { display: block; }
+    [data-theme="light"] .icon-sun  { display: block; }
+    [data-theme="light"] .icon-moon { display: none; }
+
+    /* Page layout */
+    .page-hero {
+      padding: 120px 32px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse at top, var(--glow-blob) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .page-eyebrow {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .page-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .page-meta {
+      font-size: 13px;
+      color: var(--text3);
+    }
+
+    /* Zero-data badge */
+    .zero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(180,240,80,0.10);
+      border: 1px solid var(--glass-border2);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 20px;
+    }
+    [data-theme="light"] .zero-badge {
+      background: rgba(92,114,52,0.10);
+    }
+
+    /* Content */
+    .page-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 32px 100px;
+    }
+
+    .doc-section {
+      margin-bottom: 52px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .doc-section:last-child {
+      border-bottom: none;
+    }
+
+    .doc-section h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: clamp(18px, 2.5vw, 24px);
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .doc-section p {
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .doc-section p:last-child { margin-bottom: 0; }
+
+    .doc-section ul, .doc-section ol {
+      padding-left: 20px;
+      margin: 14px 0;
+    }
+    .doc-section li {
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    .highlight-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border2);
+      border-radius: 20px;
+      padding: 28px 28px;
+      margin: 20px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--specular);
+    }
+    .highlight-card p {
+      margin-bottom: 0;
+    }
+    .highlight-card strong {
+      color: var(--accent);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    .data-table th {
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text3);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .data-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--glass-border);
+      color: var(--text2);
+      vertical-align: top;
+    }
+    .data-table td:first-child { color: var(--text); font-weight: 500; }
+    .none-val { color: var(--accent); font-weight: 600; font-size: 12px; }
+
+    code {
+      font-size: 13px;
+      color: var(--accent);
+      background: rgba(180,240,80,0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    [data-theme="light"] code {
+      background: rgba(92,114,52,0.10);
+    }
+
+    a { color: var(--accent); }
+    a:hover { text-decoration: underline; }
+
+    /* Footer */
+    footer {
+      padding: 40px 32px;
+      border-top: 1px solid var(--glass-border);
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text3);
+      opacity: .5;
+    }
+
+    @media (max-width: 600px) {
+      .nav { padding: 0 20px; }
+      .page-hero { padding: 100px 20px 48px; }
+      .page-content { padding: 0 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="Back to Orba home">
+    <svg class="nav-logo-svg" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="3.5" fill="currentColor" opacity=".9"/>
+      <ellipse class="nr nr1" cx="16" cy="16" rx="12" ry="3.5" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".8"/>
+      <ellipse class="nr nr2" cx="16" cy="16" rx="12" ry="3.5" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".8"/>
+      <ellipse class="nr nr3" cx="16" cy="16" rx="12" ry="3.5" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".7"/>
+    </svg>
+    <span class="nav-wordmark">ORBA</span>
+  </a>
+
+  <div class="nav-right">
+    <a href="index.html" class="nav-back" aria-label="Back to home">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Home
+    </a>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle dark and light mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-eyebrow">Legal</span>
+    <h1 class="page-title">Privacy Policy</h1>
+    <p class="page-meta">Last updated: May 2026 · Applies to Orba v1.0.0 and later · $4.99 one-time purchase</p>
+    <div class="zero-badge" aria-label="Zero data collected">
+      <span>🔒</span>
+      <span>Zero data collected — ever</span>
+    </div>
+  </div>
+</header>
+
+
+<main class="page-content" id="main-content">
+
+  <!-- Overview -->
+  <div class="doc-section">
+    <h2>Overview</h2>
+    <div class="highlight-card">
+      <p>
+        <strong>Short version:</strong> Orba does not collect, store, transmit, or share any personal data. Your financial entries, profile name, budget settings, and all app preferences live exclusively on your iPhone in local storage. They never leave your device.
+      </p>
+    </div>
+    <p>
+      This Privacy Policy describes how Synlynk Innovations ("we", "our", "us") handles information in connection with the Orba — Personal P&amp;L Journal iOS application ("Orba" or "the App"). By using the App, you agree to this policy.
+    </p>
+    <p>
+      <strong>Developer:</strong> Synlynk Innovations<br/>
+      <strong>App:</strong> Orba — Personal Profit &amp; Loss Journal<br/>
+      <strong>Platform:</strong> iOS (iPhone)<br/>
+      <strong>Pricing:</strong> $4.99 one-time purchase — no subscription<br/>
+      <strong>Bundle ID:</strong> <code>com.naqshforge.orba</code>
+    </p>
+  </div>
+
+  <!-- What we collect (nothing) -->
+  <div class="doc-section">
+    <h2>Information We Collect</h2>
+    <p>We collect <strong>no information</strong> of any kind. There is no account registration, no login, no email, and no user profile on our servers — because we have no servers.</p>
+
+    <table class="data-table" aria-label="Data collection summary">
+      <thead>
+        <tr>
+          <th>Data type</th>
+          <th>Collected?</th>
+          <th>Where stored</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Financial entries (amounts, categories, notes)</td>
+          <td><span class="none-val">None</span></td>
+          <td>Your device only</td>
+        </tr>
+        <tr>
+          <td>Profile name &amp; budget settings</td>
+          <td><span class="none-val">None</span></td>
+          <td>Your device only</td>
+        </tr>
+        <tr>
+          <td>Currency preferences &amp; theme</td>
+          <td><span class="none-val">None</span></td>
+          <td>Your device only</td>
+        </tr>
+        <tr>
+          <td>Device identifiers</td>
+          <td><span class="none-val">None</span></td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>Usage analytics</td>
+          <td><span class="none-val">None</span></td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>Crash reports</td>
+          <td><span class="none-val">None</span></td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>Advertising identifiers (IDFA)</td>
+          <td><span class="none-val">None</span></td>
+          <td>N/A</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Local storage -->
+  <div class="doc-section">
+    <h2>How Your Data Is Stored</h2>
+    <p>
+      All data you enter into Orba is stored locally on your iPhone using <code>AsyncStorage</code>, which utilises Apple's <code>NSUserDefaults</code> system under the hood. This data is sandboxed to the Orba app and is not accessible to other apps on your device.
+    </p>
+    <p>
+      The following local storage keys are used by the App:
+    </p>
+    <ul>
+      <li><code>@orba_entries</code> — your financial log entries</li>
+      <li><code>@orba_profile</code> — your name, spending limit, and income target</li>
+      <li><code>@orba_custom_cats</code> — your category list (built-in + custom)</li>
+      <li><code>@orba_theme</code> — your dark / light mode preference</li>
+      <li><code>@orba_schema</code> — internal schema version for migration</li>
+    </ul>
+    <p>
+      None of this data is transmitted anywhere. The App contains no networking code related to user data.
+    </p>
+  </div>
+
+  <!-- Apple Privacy Manifest -->
+  <div class="doc-section">
+    <h2>Apple Privacy Manifest</h2>
+    <p>
+      Orba includes an Apple Privacy Manifest (<code>PrivacyInfo.xcprivacy</code>) as required for App Store submission. It declares the following:
+    </p>
+    <ul>
+      <li><strong>NSPrivacyTracking:</strong> <code>false</code> — the App does not track users</li>
+      <li><strong>NSPrivacyCollectedDataTypes:</strong> <code>[]</code> (empty — no data collected)</li>
+      <li><strong>NSPrivacyAccessedAPICategoryUserDefaults</strong> — accessed solely to store your app preferences and entries locally on your device, per Apple's permitted use category "CA92.1"</li>
+      <li><strong>NSPrivacyAccessedAPICategoryFileTimestamp</strong> — used by the React Native framework for file operations; no timestamp data is collected or transmitted</li>
+    </ul>
+    <p>
+      No third-party SDKs, analytics libraries, advertising frameworks, or crash reporters are included in Orba.
+    </p>
+  </div>
+
+  <!-- Network activity -->
+  <div class="doc-section">
+    <h2>Network Activity</h2>
+    <p>
+      Orba makes <strong>zero network requests</strong> related to your data. The App functions entirely offline. You may use Orba with aeroplane mode enabled and all features will work identically.
+    </p>
+    <div class="highlight-card">
+      <p>
+        The only network activity Orba may perform is loading Google Fonts at app startup — a standard iOS behaviour for React Native apps using web fonts. This request does not include any personal or financial data. If you are offline, the App uses system fallback fonts.
+      </p>
+    </div>
+  </div>
+
+  <!-- Third parties -->
+  <div class="doc-section">
+    <h2>Third Parties</h2>
+    <p>
+      Orba does not share your information with any third party because there is no information to share. There are no advertising partners, no data brokers, no analytics providers, and no cloud infrastructure associated with this App.
+    </p>
+    <p>
+      The App is distributed through the Apple App Store. Apple's own privacy practices apply to the App Store experience itself. Please refer to <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple's Privacy Policy</a> for information about Apple's data practices.
+    </p>
+  </div>
+
+  <!-- Children -->
+  <div class="doc-section">
+    <h2>Children's Privacy</h2>
+    <p>
+      Orba does not collect any personal information from anyone, including users under the age of 13. Because no data is collected, the App does not present risks under COPPA or similar children's privacy regulations.
+    </p>
+  </div>
+
+  <!-- Deleting your data -->
+  <div class="doc-section">
+    <h2>Deleting Your Data</h2>
+    <p>You have complete control over your data at all times:</p>
+    <ul>
+      <li><strong>Delete all entries:</strong> In the App, go to <em>Me → Settings → Delete all entries</em>. This erases your entire log while preserving your profile and budget settings.</li>
+      <li><strong>Delete the App:</strong> Uninstalling Orba from your iPhone removes all associated local data permanently. iOS does not retain <code>AsyncStorage</code> data after app deletion.</li>
+      <li><strong>iPhone settings:</strong> You may also clear app storage from iPhone Settings → General → iPhone Storage → Orba → Delete App.</li>
+    </ul>
+    <p>
+      Because we hold no data on our side, there is no "request deletion from our servers" step — your data is only ever on your device.
+    </p>
+  </div>
+
+  <!-- Changes -->
+  <div class="doc-section">
+    <h2>Changes to This Policy</h2>
+    <p>
+      If we make material changes to this Privacy Policy, we will update the "Last updated" date at the top of this page and, where appropriate, provide notice through an App update on the App Store.
+    </p>
+    <p>
+      Given the zero-data nature of the App, any future policy revision would only apply if we were to introduce data collection features — which we do not currently plan to do.
+    </p>
+  </div>
+
+  <!-- Contact -->
+  <div class="doc-section">
+    <h2>Contact</h2>
+    <p>
+      If you have questions about this Privacy Policy or the App's data practices, you can reach Synlynk Innovations at:
+    </p>
+    <div class="highlight-card">
+      <p>
+        <strong>Synlynk Innovations</strong><br/>
+        Developer of Orba — Budget Journal<br/>
+        For support and privacy enquiries, please contact us through the App Store support page for Orba.
+      </p>
+    </div>
+    <p>
+      <em>Orba is a personal profit and loss journal for budgeting and journaling purposes only. It is not a financial institution and does not provide financial advice.</em>
+    </p>
+  </div>
+
+</main>
+
+
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="index.html">← Back to Home</a>
+      <a href="terms.html">Terms of Use</a>
+    </nav>
+    <p class="footer-copy">© 2026 Synlynk Innovations · All rights reserved</p>
+  </div>
+</footer>
+
+
+<script>
+  const html = document.documentElement;
+  const btn  = document.getElementById('themeBtn');
+  const stored = localStorage.getItem('orba-theme') || 'dark';
+  html.setAttribute('data-theme', stored);
+  btn.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('orba-theme', next);
+  });
+</script>
+</body>
+</html>
